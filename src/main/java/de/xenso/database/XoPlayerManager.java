@@ -3,13 +3,10 @@ package de.xenso.database;
 import java.util.HashMap;
 import java.util.UUID;
 
+//Reference from UUID to the Xenso player
 public class XoPlayerManager {
 
     private HashMap<UUID, XoCustomPlayer> xoplayer = new HashMap<>();
-
-    public XoCustomPlayer getXoPlayer(UUID uuid) {
-        return xoplayer.get(uuid);
-    }
 
     public void addXoCustomPlayer(UUID uuid, XoCustomPlayer xoCustomPlayer) {
         xoplayer.put(uuid, xoCustomPlayer);

@@ -10,9 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class XoDatabase {
-    private final String host = "locahost";
-    private final int port = 3306;
-    private final String database = "players_test";
 
     //User is just an example which isn't existing in our live project, this is for public upload purposes
     public final String user = "MusterUser";
@@ -35,8 +32,6 @@ public class XoDatabase {
     public boolean isConnected() { return hikari != null; }
     public HikariDataSource getHikari() { return hikari; }
 
-
-
     //Returns a Connection of the Hikari Connection-Pool, return null if failed
     public Connection getCon() {
         try {
@@ -48,7 +43,7 @@ public class XoDatabase {
         return null;
     }
 
-    //Shows the SQL messages ingame only for the users, which are in permission of "xenso.xosql"
+    //Shows the SQL messages ingame only for the users, which have the permission "xenso.xosql"
     public void broadcastSQLMessage(String message) {
         Bukkit.broadcast(Component.text(message), "xenso.xosql");
     }
@@ -74,7 +69,7 @@ public class XoDatabase {
         }
     }
 
-    //Custom query
+    //Custom query, returns the requested data otherwise null, please use with auto-closable (try with resources)
     public ResultSet query(String sqlCommand) throws SQLException {
         if (sqlCommand == null) {
             return null;
@@ -83,6 +78,7 @@ public class XoDatabase {
                     ResultSet rs;
                     PreparedStatement ps = getHikari().getConnection().prepareStatement(sqlCommand);
                     rs = ps.executeQuery(sqlCommand);
+                    return rs;
                 }
         }
         return null;

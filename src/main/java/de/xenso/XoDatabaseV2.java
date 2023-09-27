@@ -7,6 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class XoDatabaseV2 extends JavaPlugin {
+
     private XoDatabase xodb;
     private XoPlayerManager xoPlayerManager;
 
@@ -18,7 +19,6 @@ public final class XoDatabaseV2 extends JavaPlugin {
         xoPlayerManager = new XoPlayerManager();
 
         Bukkit.getPluginManager().registerEvents(new XoConListener(this), this);
-
     }
 
     @Override
