@@ -1,0 +1,5 @@
+name: XoDatabaseV2
+version: '1.0-SNAPSHOT'
+main: de.xenso.XoDatabaseV2
+api-version: '1.20'
+
